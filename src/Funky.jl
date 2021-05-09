@@ -1,5 +1,24 @@
 module Funky
 
+abstract type AbstractArgument end
+
+struct Argument <: AbstractArgument 
+  name::Symbol
+  type::DataType
+end
+struct OptionalArgument <: AbstractArgument 
+  name::Symbol
+  type::DataType
+  default::Any
+end
+struct KeywordArgument <: AbstractArgument 
+  name::Symbol
+  type::DataType
+  default::Any
+end
+
+
+
 """
   is_arrow_function(e::Expr)
 
@@ -105,8 +124,6 @@ function get_args(e::Expr)
 end
 
 
-"""
-"""
 function has_args(e::Expr)
 
 end
@@ -124,6 +141,17 @@ function is_kwarg(e::Expr)
 
 end
 
+
+"""
+  get_argument_list(e::Expr)
+
+Get a list of arguments for the function `e`.
+Returns arguments in a NamedTuple with the 
+keys: `(:name,:type,:default_value,:is_kwarg)`
+"""
+function get_argument_list(e::Expr)
+
+end
 
 """
   get_args(e::Expr)
@@ -152,7 +180,7 @@ end
 
 See also: [get_args](@ref), [get_kwargs](@ref)
 """
-function get_all_args(e::Expr)
+function get_args_kwargs(e::Expr)
   (
     args=get_args(e), 
     kwargs=get_kwargs(e)

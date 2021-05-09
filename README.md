@@ -13,7 +13,7 @@ julia> e = :((a::Int, b::Float64 = 2. ; k::Int = 1) -> a + b + k)
           a + b + k
       end)
 
-julia> # ...
+julia> # TODO: Explain how this package works
 ```
 
 
@@ -22,5 +22,5 @@ julia> # ...
 I started this package when working on another Julia package, 
 [QuickAPI.jl](https://github.com/a-poor/QuickAPI.jl) and found myself
 looking for some of this functionality. Rather than add it as a 
-sub-module in `QuickAPI.jl`, I figured it would be better to write it 
+sub-module in `QuickAPI`, I figured it would be better to write it 
 as a separate package. 

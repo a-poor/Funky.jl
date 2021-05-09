@@ -17,6 +17,10 @@ struct KeywordArgument <: AbstractArgument
   default::Any
 end
 
+struct FunctionArgs 
+  args::Vector{Union{Argument,OptionalArgument}}
+  kwargs::Vector{KeywordArgument}
+end
 
 
 """

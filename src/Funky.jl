@@ -2,15 +2,58 @@ module Funky
 
 greet() = print("Hello World!")
 
+"""
+  is_arrow_function(e::Expr)
 
+Checks if the expression `e` is an arrow function of the form:
+
+```julia-repl
+julia> (a::Int, b::String) -> fill(b,a)
+#1 (generic function with 1 method)
+```
+
+See also: [is_function](@ref), [is_fun_function](@ref), [is_assign_function](@ref)
+"""
 function is_arrow_function(e::Expr)
   e.head == :->
 end
 
-function is_anon_function(e::Expr)
+"""
+  is_fun_function(e::Expr)
+
+Checks if the expression `e` is a function of the form:
+
+```julia-repl
+julia> function foo(x::Int) x^2 end
+foo (generic function with 1 method)
+```
+
+or an anonamous function of the form:
+
+```julia-repl
+julia> function (x::Int) x^2 end
+#1 (generic function with 1 method)
+```
+
+See also: [is_function](@ref), [is_arrow_function](@ref), [is_assign_function](@ref)
+"""
+function is_fun_function(e::Expr)
   e.head == :function
 end
 
+
+"""
+  is_assign_function(e::Expr)
+
+Checks if the expression `e` is an arrow function of the form:
+
+```julia-repl
+julia> foo(x::Int) = x^2
+foo (generic function with 1 method)
+```
+
+See also: [is_function](@ref), [is_arrow_function](@ref), [is_fun_function](@ref)
+"""
 function is_assign_function(e::Expr)
   e.head == :(=) &&
   length(e.args) > 0 &&
@@ -46,10 +89,12 @@ false
 julia> is_function(:(a() = 1 + 2))
 true
 ```
+
+See also: [is_arrow_function](@ref), [is_fun_function](@ref), [is_assign_function](@ref)
 """
 function is_function(e::Expr)
   is_arrow_function(e) ||
-  is_anon_function(e) ||
+  is_fun_function(e) ||
   is_assign_function(e)
 end
 

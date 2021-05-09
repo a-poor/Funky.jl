@@ -1,0 +1,4 @@
+name = "Funky"
+uuid = "a66d9e10-d345-42cd-abd3-31408eef3e22"
+authors = ["Austin Poor <45295232+a-poor@users.noreply.github.com>"]
+version = "0.1.0"

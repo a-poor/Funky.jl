@@ -1,7 +1,5 @@
 module Funky
 
-greet() = print("Hello World!")
-
 """
   is_arrow_function(e::Expr)
 

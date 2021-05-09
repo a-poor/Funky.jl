@@ -127,4 +127,38 @@ function is_kwarg(e::Expr)
 end
 
 
+"""
+  get_args(e::Expr)
+
+
+See also: [get_all_args](@ref), [get_kwargs](@ref)
+"""
+function get_args(e::Expr)
+
+end
+
+"""
+  get_kwargs(e::Expr)
+
+
+See also: [get_all_args](@ref), [get_args](@ref)
+"""
+function get_kwargs(e::Expr)
+
+end
+
+
+"""
+  get_all_args(e::Expr)
+
+
+See also: [get_args](@ref), [get_kwargs](@ref)
+"""
+function get_all_args(e::Expr)
+  (
+    args=get_args(e), 
+    kwargs=get_kwargs(e)
+  )
+end
+
 end # module

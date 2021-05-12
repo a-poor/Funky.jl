@@ -1,7 +1,5 @@
 module Funky
 
-<<<<<<< HEAD
-=======
 abstract type AbstractArgument end
 
 
@@ -38,7 +36,6 @@ FunctionArgs() = FunctionArgs([],[])
 FunctionArgs(args::Vector{Union{Argument,OptionalArgument}}) = FunctionArgs(args,[])
 
 
->>>>>>> bf725e2082d69e4b1c750c6e9c5cd08e5cedfec6
 """
   is_arrow_function(e::Expr)
 
